@@ -1,0 +1,59 @@
+# Model Configuration
+model:
+  architecture: "bert-lstm-ensemble"
+  max_sequence_length: 512
+  embedding_dim: 768
+  lstm_units: 256
+  dropout: 0.3
+  learning_rate: 2e-5
+  batch_size: 32
+  epochs: 10
+  early_stopping_patience: 3
+
+# Data Configuration
+data:
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  min_document_length: 10
+  max_document_length: 5000
+  vocab_size: 50000
+  
+# Preprocessing Configuration
+preprocessing:
+  lowercase: true
+  remove_punctuation: false
+  remove_stopwords: false
+  lemmatization: true
+  min_word_frequency: 2
+  max_workers: 4
+
+# Training Configuration
+training:
+  mixed_precision: true
+  gradient_accumulation_steps: 4
+  warmup_steps: 500
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  save_best_only: true
+  
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 5000
+  debug: false
+  max_batch_size: 100
+  cache_ttl: 3600
+  
+# Redis Configuration
+redis:
+  host: "localhost"
+  port: 6379
+  db: 0
+  
+# Paths
+paths:
+  data_dir: "data"
+  models_dir: "data/models"
+  logs_dir: "logs"
+  cache_dir: ".cache"
